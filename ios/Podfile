@@ -17,6 +17,10 @@ end
 target 'AwesomeProject' do
   config = use_native_modules!
 
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
+
+
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
@@ -37,4 +41,5 @@ target 'AwesomeProject' do
       # :ccache_enabled => true
     )
   end
+  pod 'Firebase/Messaging'
 end
