@@ -5,7 +5,7 @@ const Stack = createStackNavigator();
 export const OperationNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="operation" component={OperationScreen} />
+      <Stack.Screen name="operationn" component={OperationScreen} />
     </Stack.Navigator>
   );
 };
