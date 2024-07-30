@@ -2,13 +2,13 @@ import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  Text,
   View,
   Dimensions,
   StyleSheet,
 } from 'react-native';
 import {BaseCard} from '../components/baseCard/BaseCard';
 import {Loading} from '../../components/Loading';
+import {Text} from 'react-native-paper';
 
 export const HomeScreen = () => {
   const {width, height} = Dimensions.get('window');
@@ -17,11 +17,18 @@ export const HomeScreen = () => {
       <ScrollView contentContainerStyle={{backgroundColor: 'white', flex: 1}}>
         <View style={styles.infoContainer}>
           <Text> Bienvenidos al banco BCP</Text>
-          <BaseCard />
+          {/* <BaseCard title={'Hola'} content="hola" /> */}
         </View>
         <View style={styles.operationContainer}>
-          <Text> Bienvenidos al banco BCP</Text>
-          <BaseCard />
+          {/* <BaseCard title={'Donaciones'} content="hola" /> */}
+          <BaseCard bgColor="#000080">
+            <Text style={{color: 'white'}} variant="titleLarge">
+              Cambia soles y dólares
+            </Text>
+            <Text style={{color: 'white'}} variant="titleSmall">
+              Cuando quieras, donde quieras
+            </Text>
+          </BaseCard>
         </View>
       </ScrollView>
       <Loading />

@@ -29,7 +29,7 @@ export const useAuth = () => {
     if (jwtToken) {
       setToken(jwtToken);
     }
-  }, [token]);
+  }, []);
 
   return {email, password, handlePassword, handleEmail, token, sendLogin};
 };

@@ -1,21 +1,27 @@
 import React from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Avatar, Button, Card, Text} from 'react-native-paper';
 
 const LeftContent = (props: any) => <Avatar.Icon {...props} icon="folder" />;
 
-export const BaseCard = () => {
+interface IBaseCard {
+  title?: string;
+  content: string;
+  bgColor?: string;
+  children: React.ReactNode;
+}
+
+export const BaseCard = ({title, content, bgColor, children}: IBaseCard) => {
   return (
-    <Card>
-      <Card.Title
-        title="Card Title"
-        subtitle="Card Subtitle"
-        left={LeftContent}
-      />
-      <Card.Content>
-        <Text variant="titleLarge">Card title</Text>
-        <Text variant="bodyMedium">Card content</Text>
-      </Card.Content>
+    <Card style={[styles.container, {backgroundColor: bgColor}]}>
+      {title && <Card.Title title="Card Title" subtitle="Card Subtitle" />}
+      <Card.Content>{children}</Card.Content>
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+  },
+});
