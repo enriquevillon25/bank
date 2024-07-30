@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import {Button} from 'react-native-paper';
 import {useAuth} from '../../../hooks/useAuth';
+import {UserContext} from '../../../context/UseContext';
 
 export const LoginScreen = () => {
   const {email, password, handlePassword, handleEmail} = useAuth();
+  const {sendLogin} = useContext(UserContext);
   return (
     <View style={styles.container}>
       <TextInput
@@ -18,10 +20,7 @@ export const LoginScreen = () => {
         value={password}
         onChangeText={text => handlePassword(text)}
       />
-      <Button
-        icon="camera"
-        mode="contained"
-        onPress={() => console.log('Pressed')}>
+      <Button icon="camera" mode="contained" onPress={() => sendLogin()}>
         Send
       </Button>
     </View>
