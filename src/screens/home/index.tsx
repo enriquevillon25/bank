@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {BaseCard} from '../components/baseCard/BaseCard';
+import {Loading} from '../../components/Loading';
 
 export const HomeScreen = () => {
   const {width, height} = Dimensions.get('window');
@@ -23,6 +24,7 @@ export const HomeScreen = () => {
           <BaseCard />
         </View>
       </ScrollView>
+      <Loading />
     </SafeAreaView>
   );
 };
