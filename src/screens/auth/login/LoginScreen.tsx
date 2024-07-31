@@ -6,7 +6,7 @@ import {useAuth} from '../../../hooks/useAuth';
 import {UserContext} from '../../../context/UseContext';
 
 export const LoginScreen = () => {
-  const {email, password, handlePassword, handleEmail} = useAuth();
+  const {email, password, handlePassword, handleEmail, isLoading} = useAuth();
   const {sendLogin} = useContext(UserContext);
   return (
     <View style={styles.container}>
@@ -20,7 +20,11 @@ export const LoginScreen = () => {
         value={password}
         onChangeText={text => handlePassword(text)}
       />
-      <Button icon="camera" mode="contained" onPress={() => sendLogin()}>
+      <Button
+        icon="camera"
+        mode="contained"
+        onPress={() => sendLogin()}
+        loading={isLoading}>
         Send
       </Button>
     </View>

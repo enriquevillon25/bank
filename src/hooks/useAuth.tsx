@@ -4,16 +4,17 @@ import {useEffect, useState} from 'react';
 import {AuthService} from '../core/services/AuthService';
 
 export const useAuth = () => {
-  const [email, setEmail] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [token, setToken] = useState<any>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const authService = new AuthService();
+
   const handlePassword = (value: string) => {
     setPassword(value);
   };
-  const handleEmail = (value: string) => {
-    setEmail(value);
+  const handleUserName = (value: string) => {
+    setUserName(value);
   };
 
   const sendLogin = async () => {
@@ -31,6 +32,14 @@ export const useAuth = () => {
       setIsLoading(false);
     }
   };
+
+  const sendRegister = async () => {
+    try {
+    } catch (e) {
+    } finally {
+    }
+  };
+
   useEffect(() => {
     const jwtToken = AsyncStorage.getItem('token');
     if (jwtToken) {
@@ -38,5 +47,13 @@ export const useAuth = () => {
     }
   }, []);
 
-  return {email, password, handlePassword, handleEmail, token, sendLogin};
+  return {
+    userName,
+    password,
+    handlePassword,
+    handleUserName,
+    token,
+    sendLogin,
+    isLoading,
+  };
 };
