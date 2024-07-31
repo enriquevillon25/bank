@@ -1,11 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import {AuthService} from '../core/services/AuthService';
 
 export const useAuth = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [token, setToken] = useState<any>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const authService = new AuthService();
   const handlePassword = (value: string) => {
     setPassword(value);
   };
@@ -13,16 +16,20 @@ export const useAuth = () => {
     setEmail(value);
   };
 
-  const sendLogin = () => {
-    axios
-      .post('http://localhost:3000/api/login', {
-        username: 'user123',
+  const sendLogin = async () => {
+    try {
+      const response = await authService.login({
+        username: 'user123456',
         password: '123456',
-      })
-      .then(response => {
-        setToken(response.data.token);
-        AsyncStorage.setItem('token', response.data.token);
       });
+      setIsLoading(true);
+      AsyncStorage.setItem('token', token);
+      setToken(response.token);
+    } catch (e) {
+      return e;
+    } finally {
+      setIsLoading(false);
+    }
   };
   useEffect(() => {
     const jwtToken = AsyncStorage.getItem('token');

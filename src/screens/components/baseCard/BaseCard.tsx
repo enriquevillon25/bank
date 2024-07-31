@@ -6,12 +6,11 @@ const LeftContent = (props: any) => <Avatar.Icon {...props} icon="folder" />;
 
 interface IBaseCard {
   title?: string;
-  content: string;
   bgColor?: string;
   children: React.ReactNode;
 }
 
-export const BaseCard = ({title, content, bgColor, children}: IBaseCard) => {
+export const BaseCard = ({title, children, bgColor}: IBaseCard) => {
   return (
     <Card style={[styles.container, {backgroundColor: bgColor}]}>
       {title && <Card.Title title="Card Title" subtitle="Card Subtitle" />}

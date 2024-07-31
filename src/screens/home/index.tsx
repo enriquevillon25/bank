@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,9 +9,14 @@ import {
 import {BaseCard} from '../components/baseCard/BaseCard';
 import {Loading} from '../../components/Loading';
 import {Text} from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const HomeScreen = () => {
   const {width, height} = Dimensions.get('window');
+  useEffect(() => {
+    AsyncStorage.clear();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{backgroundColor: 'white', flex: 1}}>
@@ -31,7 +36,6 @@ export const HomeScreen = () => {
           </BaseCard>
         </View>
       </ScrollView>
-      <Loading />
     </SafeAreaView>
   );
 };
